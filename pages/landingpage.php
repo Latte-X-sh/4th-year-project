@@ -7,36 +7,30 @@
               <div class="stat-cards-icon primary"> <!--icon section -->
                 <i data-feather="bar-chart-2" aria-hidden="true"></i>
               </div>
+              <a href="index.php?page=signin">
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">1478 286</p>
-                <p class="stat-cards-info__title">Furniture</p>
-                <p class="stat-cards-info__progress">
-                  <span class="stat-cards-info__profit success">
-                    <i data-feather="trending-up" aria-hidden="true"></i>4.07%
-                  </span>
-                  Last month
-                </p>
+                <p class="stat-cards-info__num">Sign Up</p>
+                <p class="stat-cards-info__title">Click Here!</p>
               </div>
+              </a>
             </article>
           </div>
+        
           <div class="col-md-6 col-xl-3">
             <article class="stat-cards-item">
               <div class="stat-cards-icon warning">
                 <i data-feather="file" aria-hidden="true"></i>
               </div>
+              <a href="index.php?page=login">
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">1478 286</p>
-                <p class="stat-cards-info__title">Electronics</p>
-                <p class="stat-cards-info__progress">
-                  <span class="stat-cards-info__profit success">
-                    <i data-feather="trending-up" aria-hidden="true"></i>0.24%
-                  </span>
-                  Last month
-                </p>
+                <p class="stat-cards-info__num">Login</p>
+                <p class="stat-cards-info__title">Click Here!</p>
               </div>
+              </a>
             </article>
           </div>
-          <div class="col-md-6 col-xl-3">
+
+          <!-- <div class="col-md-6 col-xl-3">
             <article class="stat-cards-item">
               <div class="stat-cards-icon purple">
                 <i data-feather="file" aria-hidden="true"></i>
@@ -52,8 +46,8 @@
                 </p>
               </div>
             </article>
-          </div>
-          <div class="col-md-6 col-xl-3">
+          </div> -->
+          <!-- <div class="col-md-6 col-xl-3">
             <article class="stat-cards-item">
               <div class="stat-cards-icon success">
                 <i data-feather="feather" aria-hidden="true"></i>
@@ -69,246 +63,23 @@
                 </p>
               </div>
             </article>
-          </div>
+          </div> -->
         </div>
         <div class="row">
           <div class="col-lg-9">
-            <div class="chart">
-              <canvas id="myChart" aria-label="Site statistics" role="img"></canvas>
-            </div>
-            <div class="users-table table-wrapper">
-              <table class="posts-table">
-                <thead>
-                  <tr class="users-table-info">
-                    <th>
-                      <label class="users-table__checkbox ms-20">
-                        <input type="checkbox" class="check-all">Thumbnail
-                      </label>
-                    </th>
-                    <th>Title</th>
-                    <th>Author</th>
-                    <th>Status</th>
-                    <th>Date</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/01.webp" type="image/webp"><img src="./img/categories/01.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      Starting your traveling blog with Vasco
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-04.webp" type="image/webp"><img src="./img/avatar/avatar-face-04.png" alt="User Name"></picture>
-                        Jenny Wilson
-                      </div>
-                    </td>
-                    <td><span class="badge-pending">Pending</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/02.webp" type="image/webp"><img src="./img/categories/02.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      Start a blog to reach your creative peak
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img src="./img/avatar/avatar-face-03.png" alt="User Name"></picture>
-                        Annette Black
-                      </div>
-                    </td>
-                    <td><span class="badge-pending">Pending</span></td>
-                    <td>23.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/03.webp" type="image/webp"><img src="./img/categories/03.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      Helping a local business reinvent itself
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-02.webp" type="image/webp"><img src="./img/avatar/avatar-face-02.png" alt="User Name"></picture>
-                        Kathryn Murphy
-                      </div>
-                    </td>
-                    <td><span class="badge-active">Active</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/04.webp" type="image/webp"><img src="./img/categories/04.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      Caring is the new marketing
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-05.webp" type="image/webp"><img src="./img/avatar/avatar-face-05.png" alt="User Name"></picture>
-                        Guy Hawkins
-                      </div>
-                    </td>
-                    <td><span class="badge-active">Active</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/01.webp" type="image/webp"><img src="./img/categories/01.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      How to build a loyal community online and offline
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img src="./img/avatar/avatar-face-03.png" alt="User Name"></picture>
-                        Robert Fox
-                      </div>
-                    </td>
-                    <td><span class="badge-active">Active</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/03.webp" type="image/webp"><img src="./img/categories/03.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      How to build a loyal community online and offline
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img src="./img/avatar/avatar-face-03.png" alt="User Name"></picture>
-                        Robert Fox
-                      </div>
-                    </td>
-                    <td><span class="badge-active">Active</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+         <p class="stat-cards-info__num">
+           Welcome to the AR-Ecommerce site where most of our products are able to be 3d rendered to the environmental space using your Phone camera.Kindly make sure you follow our guidelines for a smooth process.Thanking you in advance and welcome.Kindly signin to enjoy the full effect of the system.
+         <p>
+        
           </div>
           <div class="col-lg-3">
-            <article class="customers-wrapper">
+            <!-- <article class="customers-wrapper">
               <canvas id="customersChart" aria-label="Customers statistics" role="img"></canvas>
-              <!--              <p class="customers__title">New Customers <span>+958</span></p>
+                          <p class="customers__title">New Customers <span>+958</span></p>
               <p class="customers__date">28 Daily Avg.</p>
-              <picture><source srcset="./img/svg/customers.svg" type="image/webp"><img src="./img/svg/customers.svg" alt=""></picture> -->
-            </article>
-            <article class="white-block">
+              <picture><source srcset="./img/svg/customers.svg" type="image/webp"><img src="./img/svg/customers.svg" alt=""></picture>
+            </article> -->
+            <!-- <article class="white-block">
               <div class="top-cat-title">
                 <h3>Top categories</h3>
                 <p>28 Categories, 1400 Posts</p>
@@ -395,7 +166,7 @@
                   </a>
                 </li>
               </ul>
-            </article>
+            </article> -->
           </div>
         </div>
       </div>

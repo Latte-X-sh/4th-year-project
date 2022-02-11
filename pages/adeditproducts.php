@@ -1,7 +1,18 @@
 <?php
 // require './lib/functions.php';
+$products = product_feed();
+// $products = array_reverse($products);
+// var_dump($products);
+// die();
+
+ $amoutofproducts = sizeof($products);
+ $i = $amoutofproducts;
 
 checkstatus();
+$productData = catgeoryProd();
+$categoryNumber = sizeof($productData);
+// var_dump($productData[0]["productcategory"]);
+// die();
 ?>
       <div class="container">
         <h2 class="main-title">Edit Products</h2>
@@ -12,14 +23,14 @@ checkstatus();
                 <i data-feather="bar-chart-2" aria-hidden="true"></i>
               </div>
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">0</p>
+                <p class="stat-cards-info__num"><?php echo htmlspecialchars($amoutofproducts);?></p>
                 <p class="stat-cards-info__title">Total Products</p>
-                <p class="stat-cards-info__progress">
+                <!-- <p class="stat-cards-info__progress">
                   <span class="stat-cards-info__profit success">
                     <i data-feather="trending-up" aria-hidden="true"></i>4.07%
                   </span>
                   Last month
-                </p>
+                </p> -->
               </div>
             </article>
           </div>
@@ -29,14 +40,14 @@ checkstatus();
                 <i data-feather="file" aria-hidden="true"></i>
               </div>
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">0</p>
-                <p class="stat-cards-info__title">Total Sales </p>
-                <p class="stat-cards-info__progress">
+                <p class="stat-cards-info__num"><?php echo htmlspecialchars($categoryNumber);?></p>
+                <p class="stat-cards-info__title">Total Categories </p>
+                <!-- <p class="stat-cards-info__progress">
                   <span class="stat-cards-info__profit success">
                     <i data-feather="trending-up" aria-hidden="true"></i>0.24%
                   </span>
                   This month
-                </p>
+                </p> -->
               </div>
             </article>
           </div>
@@ -46,14 +57,9 @@ checkstatus();
                 <i data-feather="file" aria-hidden="true"></i>
               </div>
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">1478 286</p>
-                <p class="stat-cards-info__title">Total AR products</p>
-                <p class="stat-cards-info__progress">
-                  <span class="stat-cards-info__profit danger">
-                    <i data-feather="trending-down" aria-hidden="true"></i>1.64%
-                  </span>
-                  Last month
-                </p>
+                <p class="stat-cards-info__num"><?php echo htmlspecialchars($productData[0]["productcategory"]);?></p>
+                <p class="stat-cards-info__title">Top Product Category</p>
+           
               </div>
             </article>
           </div>
@@ -63,14 +69,9 @@ checkstatus();
                 <i data-feather="feather" aria-hidden="true"></i>
               </div>
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">1478 286</p>
-                <p class="stat-cards-info__title">New Products</p>
-                <p class="stat-cards-info__progress">
-                  <span class="stat-cards-info__profit warning">
-                    <i data-feather="trending-up" aria-hidden="true"></i>0.00%
-                  </span>
-                  Last month
-                </p>
+                <p class="stat-cards-info__num"><?php echo htmlspecialchars($productData[0]["productcategory"]);?></p>
+                <p class="stat-cards-info__title">Top AR Product</p>
+        
               </div>
             </article>
           </div>
@@ -87,12 +88,10 @@ checkstatus();
                 <thead>
                   <tr class="users-table-info">
                     <th>
-                      <label class="users-table__checkbox ms-20">
-                        <input type="checkbox" class="check-all">Product Profile
-                      </label>
+                     ProdID
                     </th>
+                    <th>Product name</th>
                     <th>Product Description</th>
-                    <th>Product Serial</th>
                     <th>Product Price</th>
                     <th>AR ABLE</th>
                     <th>Category</th>
@@ -100,34 +99,33 @@ checkstatus();
                   </tr>
                 </thead>
                 <tbody>
+                <?php foreach($products as $product) {?>
                   <tr>
                     <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                      
-                          <div class="pages-table-img">
-                            <picture><source srcset="./img/avatar/avatar-face-04.webp" type="image/webp"><img src="./img/avatar/avatar-face-04.png" alt="User Name"></picture>
-                           Ergonomic Chair
-                          </div>
-                       
-                        <!-- <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/01.webp" type="image/webp"><img src="./img/categories/01.jpg" alt="category"></picture>
-                        </div> -->
-                      </label>
+                    <?php
+                   $productid = $product["productid"];
+                  echo htmlspecialchars($productid);?>
+                    
                     </td>
                     <td>
-                     latteindigox@gmail.com
+                    <?php
+                  echo htmlspecialchars($product['productname']);?>
+                
                     </td>
                     <td>
-                      <div class="pages-table-img">
-                        <!-- <picture><source srcset="./img/avatar/avatar-face-04.webp" type="image/webp"><img src="./img/avatar/avatar-face-04.png" alt="User Name"></picture> -->
-                        HASHEDNAME+DATECREATED
-                      </div>
+                    <?php echo htmlspecialchars($product['productdescription']);?>
                     </td>
                     <!-- <td><span class="badge-active">FEMALE</span></td> -->
-                    <td><span class="badge-active">KSH 4000</span></td>
-                    <td><span class="badge-pending">YES</span></td>
-                    <td>Furniture</td>
+                    <td><span class="badge-active">KSH <?php echo htmlspecialchars($product['productprice']);?></span></td>
+                    <td><span class="badge-pending"><?php 
+                    if($product['product3dimage'] == ""){
+                      $armodel = 'NO';
+                    }else{
+                      $armodel = 'YES';
+                    }
+                    echo htmlspecialchars($armodel);
+                    ?></span></td>
+                    <td><?php echo htmlspecialchars($product['productcategory']) ?></td>
                     <td>
                       <span class="p-relative">
                         <button class="dropdown-btn transparent-btn" type="button" title="More info">
@@ -138,11 +136,14 @@ checkstatus();
                           <!--
                           <li><a href="##">Quick edit</a></li> -->
                           <!-- <li><a href="##">Trash</a></li> -->
-                          <li><a href="##">Edit</a></li>
+                          <li><a href="index.php?page=prodprofile&id=<?php echo $productid;?>">Edit</a></li>
+                          <li><a href="./pages/deleteprod.php?id=<?php echo $productid;?>">Delete</a></li>
                         </ul>
                       </span>
                     </td>
-                  </tr>
+                    </tr>
+                    <?php } ?>
+             
                 </tbody>
               </table>
             </div>
@@ -154,21 +155,32 @@ checkstatus();
               <p class="customers__date">28 Daily Avg.</p>
               <picture><source srcset="./img/svg/customers.svg" type="image/webp"><img src="./img/svg/customers.svg" alt=""></picture> 
             </article> -->
-            <p class="white-block__title">Popular AR Models</p>
+            <p class="white-block__title">Popular AR Tips</p>
             <article class="white-block">
               <div class="top-cat-title">
-                <h3>Top AR product</h3>
-                <p>Showing 28 out of  1400 products</p>
+                <h3> Some AR tips to consider</h3>
+                <p><i>WebXr is a niche that has potential</i></p>
               </div>
               <ul class="top-cat-list">
                 <li>
                   <a href="##">
                     
                     <div class="top-cat-list__title">
-                      Madison Blue <span>Android v7</span>
+                      Have an android phone of atleast version <span>Android v7</span>
                     </div>
                     <div class="top-cat-list__subtitle">
-                      Egonomic Chair <span class="purple">KSH 3000</span>
+                    Ar Core should be  <span class="purple">Present</span>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="##">
+                    
+                    <div class="top-cat-list__title">
+                     Be in a wide area or environment. <span></span>
+                    </div>
+                    <div class="top-cat-list__subtitle">
+                    Home compound ,fields or even ample space is needed  <span class="purple">Present</span>
                     </div>
                   </a>
                 </li>

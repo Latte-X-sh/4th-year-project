@@ -3,7 +3,11 @@ include 'index.php';
 // var_dump($_GET['page']);
 // die();
 $renderedPage = $_GET['page'];
-
+$title = explode("/",$renderedPage);
+$newTitle = explode(".",$title['1']);
+$headingTitle = $newTitle[0];
+// var_dump($headingTitle);
+// die();
 
 // var_dump($renderedPage);
 ?>
@@ -15,7 +19,7 @@ $renderedPage = $_GET['page'];
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>I-shop | {variable}</title>
+  <title>I-shop | <?php echo $headingTitle; ?></title>
   <!-- Favicon -->
   <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
   <!-- Custom styles -->
@@ -44,7 +48,7 @@ $renderedPage = $_GET['page'];
     <footer class="footer">
   <div class="container footer--flex">
     <div class="footer-start">
-      <p>2021 © Indigo-Devs Creation - <a href="elegant-dashboard.com" target="_blank"
+      <p>2021 © Indigo-Devs Creation - <a href="#" target="_blank"
           rel="noopener noreferrer">indigoregime.com</a></p>
     </div>
     <ul class="footer-end">

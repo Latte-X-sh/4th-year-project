@@ -173,5 +173,70 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
+    }if(isset($_POST['updateProduct'])){
+//  var_dump($_FILES['ar3dimage']);
+//         die();
+        $prodid = $_POST['productid'];
+        $update_array = array(
+            'productname' => '',
+            'productprice' => '',
+            'prodcategory' => '',
+            'size' => '',
+            'desc' => '',
+        );
+        if (isset($_FILES['productimage'])) {
+            $prodimage = $_FILES['productimage'];
+            //image processing
+            $prodimage2 = updateproductimage_processing($prodimage,$prodid);
+        } else {
+            //later index
+            $error="failed to upload product image";
+            header("Location:index.php?page=prodprofile?err=$error");
+        }
+        if (isset($_FILES['ar3dimage'])) {
+            $ar3dimage = $_FILES['ar3dimage'];
+            //image processing
+            $ar3dimage2 = updateimage3D_processing($ar3dimage,$prodid);
+            // var_dump(updateimage3D_processing($ar3dimage,$prodid));
+            // die();
+        } else {
+            //later index
+            $error="failed to upload 3D product image";
+            header("Location:index.php?page=prodprofile?err=$error");
+        }
+        if (isset($_POST['productname'])) {
+            $productname = $_POST['productname'];
+            $update_array['productname'] = $productname;
+        } else {
+            $productname = "";
+        }
+        if (isset($_POST['productprice'])) {
+            $productprice = $_POST['productprice'];
+            $update_array['productprice'] = $productprice;
+        } else {
+            $productprice = "";
+        }
+        if (isset($_POST['prodcategory'])) {
+            $prodcategory = $_POST['prodcategory'];
+            $update_array['prodcategory'] = $prodcategory;
+        } else {
+            $prodcategory = "";
+        }
+        if (isset($_POST['size'])) {
+            $size = $_POST['size'];
+            $update_array['size'] = $size;
+        } else {
+            $size = "";
+        }
+        if (isset($_POST['desc'])) {
+            $desc = $_POST['desc'];
+            $update_array['desc'] = $desc;
+        } else {
+            $desc = "";
+        }
+        // print_r($update_array);
+        // die();
+        update_prod_data($update_array,$prodid);
+        header("Location:index.php?page=products");
     }
 }

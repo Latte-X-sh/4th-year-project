@@ -16,7 +16,12 @@ switch($user['Roletype']){
 }
 // var_dump($user);
 // die();
-
+$products = product_feed();
+$productcount = sizeof($products);
+$viewProducts = viewedProd($userdata);
+$sizeProducts = sizeof($viewProducts);
+// var_dump($sizeProducts);
+// die();
 
 ?>
       <div class="container">
@@ -45,14 +50,9 @@ switch($user['Roletype']){
                 <i data-feather="file" aria-hidden="true"></i>
               </div>
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">1478 286</p>
+                <p class="stat-cards-info__num"><?php echo htmlspecialchars($sizeProducts);?></p>
                 <p class="stat-cards-info__title">Total products viewed</p>
-                <p class="stat-cards-info__progress">
-                  <span class="stat-cards-info__profit success">
-                    <i data-feather="trending-up" aria-hidden="true"></i>0.24%
-                  </span>
-                  Last month
-                </p>
+               
               </div>
             </article>
           </div>
@@ -62,14 +62,9 @@ switch($user['Roletype']){
                 <i data-feather="file" aria-hidden="true"></i>
               </div>
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">1478 286</p>
+                <p class="stat-cards-info__num"><?php echo htmlspecialchars($sizeProducts);?></p>
                 <p class="stat-cards-info__title">Total AR model viewed</p>
-                <p class="stat-cards-info__progress">
-                  <span class="stat-cards-info__profit danger">
-                    <i data-feather="trending-down" aria-hidden="true"></i>1.64%
-                  </span>
-                  Last month
-                </p>
+              
               </div>
             </article>
           </div>
@@ -79,14 +74,9 @@ switch($user['Roletype']){
                 <i data-feather="feather" aria-hidden="true"></i>
               </div>
               <div class="stat-cards-info">
-                <p class="stat-cards-info__num">1478 286</p>
-                <p class="stat-cards-info__title">Total Goods purchased</p>
-                <p class="stat-cards-info__progress">
-                  <span class="stat-cards-info__profit warning">
-                    <i data-feather="trending-up" aria-hidden="true"></i>0.00%
-                  </span>
-                  Last month
-                </p>
+                <p class="stat-cards-info__num"><?php echo htmlspecialchars($productcount);?></p>
+                <p class="stat-cards-info__title">Total Goods available</p>
+               
               </div>
             </article>
           </div>
@@ -99,226 +89,56 @@ switch($user['Roletype']){
             <p class="white-block__title">Viewed products</p>
             <!-- products table -->
             <div class="users-table table-wrapper">
-              <table class="posts-table">
+            <table class="posts-table">
                 <thead>
                   <tr class="users-table-info">
                     <th>
-                      <label class="users-table__checkbox ms-20">
-                        <input type="checkbox" class="check-all">Product image
-                      </label>
+                     ProdID
                     </th>
                     <th>Product name</th>
-                    <th>Seller</th>
-                    <th>Status</th>
-                    <th>Price</th>
-                    <th>Action</th>
+                    <th>Product Description</th>
+                    <th>Product Price</th>
+                    <th>AR ABLE</th>
+                    <th>Category</th>
                   </tr>
                 </thead>
                 <tbody>
+                <?php foreach ($viewProducts as $viewProduct) { ?>
+                    <?php 
+                    $pid = $viewProduct['productid'];
+                    $proddata = prodget($pid);
+                    // var_dump($proddata);
+                    // die();
+                    ?>
                   <tr>
                     <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/01.webp" type="image/webp"><img src="./img/categories/01.jpg" alt="category"></picture>
-                        </div>
-                      </label>
+                    <?php
+                   $productid = $proddata["productid"];
+                  echo htmlspecialchars($productid);?>
+                    
                     </td>
                     <td>
-                      Starting your traveling blog with Vasco
+                    <?php
+                  echo htmlspecialchars($proddata['productname']);?>
+                
                     </td>
                     <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-04.webp" type="image/webp"><img src="./img/avatar/avatar-face-04.png" alt="User Name"></picture>
-                        Jenny Wilson
-                      </div>
+                    <?php echo htmlspecialchars($proddata['productdescription']);?>
                     </td>
-                    <td><span class="badge-pending">Pending</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/02.webp" type="image/webp"><img src="./img/categories/02.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      Start a blog to reach your creative peak
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img src="./img/avatar/avatar-face-03.png" alt="User Name"></picture>
-                        Annette Black
-                      </div>
-                    </td>
-                    <td><span class="badge-pending">Pending</span></td>
-                    <td>23.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/03.webp" type="image/webp"><img src="./img/categories/03.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      Helping a local business reinvent itself
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-02.webp" type="image/webp"><img src="./img/avatar/avatar-face-02.png" alt="User Name"></picture>
-                        Kathryn Murphy
-                      </div>
-                    </td>
-                    <td><span class="badge-active">Active</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/04.webp" type="image/webp"><img src="./img/categories/04.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      Caring is the new marketing
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-05.webp" type="image/webp"><img src="./img/avatar/avatar-face-05.png" alt="User Name"></picture>
-                        Guy Hawkins
-                      </div>
-                    </td>
-                    <td><span class="badge-active">Active</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/01.webp" type="image/webp"><img src="./img/categories/01.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      How to build a loyal community online and offline
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img src="./img/avatar/avatar-face-03.png" alt="User Name"></picture>
-                        Robert Fox
-                      </div>
-                    </td>
-                    <td><span class="badge-active">Active</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <label class="users-table__checkbox">
-                        <input type="checkbox" class="check">
-                        <div class="categories-table-img">
-                          <picture><source srcset="./img/categories/03.webp" type="image/webp"><img src="./img/categories/03.jpg" alt="category"></picture>
-                        </div>
-                      </label>
-                    </td>
-                    <td>
-                      How to build a loyal community online and offline
-                    </td>
-                    <td>
-                      <div class="pages-table-img">
-                        <picture><source srcset="./img/avatar/avatar-face-03.webp" type="image/webp"><img src="./img/avatar/avatar-face-03.png" alt="User Name"></picture>
-                        Robert Fox
-                      </div>
-                    </td>
-                    <td><span class="badge-active">Active</span></td>
-                    <td>17.04.2021</td>
-                    <td>
-                      <span class="p-relative">
-                        <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                          <div class="sr-only">More info</div>
-                          <i data-feather="more-horizontal" aria-hidden="true"></i>
-                        </button>
-                        <ul class="users-item-dropdown dropdown">
-                          <li><a href="##">Edit</a></li>
-                          <li><a href="##">Quick edit</a></li>
-                          <li><a href="##">Trash</a></li>
-                        </ul>
-                      </span>
-                    </td>
-                  </tr>
+                    <!-- <td><span class="badge-active">FEMALE</span></td> -->
+                    <td><span class="badge-active">KSH <?php echo htmlspecialchars($proddata['productprice']);?></span></td>
+                    <td><span class="badge-pending"><?php 
+                    if($proddata['product3dimage'] == ""){
+                      $armodel = 'NO';
+                    }else{
+                      $armodel = 'YES';
+                    }
+                    echo htmlspecialchars($armodel);
+                    ?></span></td>
+                    <td><?php echo htmlspecialchars($proddata['productcategory']) ?></td>
+                    </tr>
+                    <?php } ?>
+             
                 </tbody>
               </table>
             </div>
@@ -332,30 +152,36 @@ switch($user['Roletype']){
             <!-- </article> -->
             <article class="white-block">
               <div class="top-cat-title">
-                <h3>Trending Products</h3>
-                <p>28 Products</p>
+                <h3> Some AR tips to consider</h3>
+                <p><i>WebXr is a niche that has potential</i></p>
+              
               </div>
               <ul class="top-cat-list">
+           
+                  <ul class="top-cat-list">
                 <li>
                   <a href="##">
+                    
                     <div class="top-cat-list__title">
-                      Lifestyle <span>8.2k</span>
+                      Have an android phone of atleast version <span>Android v7</span>
                     </div>
                     <div class="top-cat-list__subtitle">
-                      Dailiy lifestyle articles <span class="purple">+472</span>
+                    Ar Core should be  <span class="purple">Present</span>
                     </div>
                   </a>
                 </li>
                 <li>
                   <a href="##">
+                    
                     <div class="top-cat-list__title">
-                      Geography <span>8.2k</span>
+                     Be in a wide area or environment. <span></span>
                     </div>
                     <div class="top-cat-list__subtitle">
-                      Geography articles <span class="primary">+472</span>
+                    Home compound ,fields or even ample space is needed  <span class="purple">Present</span>
                     </div>
                   </a>
                 </li>
+
               </ul>
             </article>
           </div>

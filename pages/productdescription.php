@@ -1,11 +1,16 @@
 <?php
 //product query
 
+checkstatus();
 $productid = $_GET["id"];
 $product = product_specific($productid);
 $productcategory = product_specific_category($product['productcategory']);
 $totalproductsofcategory = sizeof($productcategory);
 // var_dump($product['product3dimage'] );
+  $userid = $_SESSION['id'];
+  $tvalue = 1;
+  viewrating($productid,$userid,$tvalue);
+
 if($product['product3dimage'] == ""){
   $armodel = 'NO';
 }else{
@@ -99,31 +104,24 @@ if($product['product3dimage'] == ""){
                 <li>
                  
                     <div class="top-cat-list__title">
-                    <a href="./pages/viewar.php">
-                      <p class="sign-up__subtitle">VIEW PRODUCT IN AUGMENTED REALITY</p> </a>  <span>Check your Device if its Compatible</span>
+                    <!-- index.php?page=shoppingcart -->
+                    <?php if($armodel == 'YES' ) {?>
+                    <a href="index.php?page=viewar&id=<?php echo $productid;?>">
+                      <p class="sign-up__subtitle">VIEW PRODUCT IN AUGMENTED REALITY</p> </a><?php } ?>  <a href="https://developers.google.com/ar/devices#google_play_devices"><span>Check your Device if its Compatible</span></a>
                     </div>
                     <div class="top-cat-list__subtitle">
                       Emergence of this immersive technology has brought interactivity to the attention span of the whole world. <span class="purple">Minimum Specs</span><span class="blue">Android 7+ with ARCORE</span>
                     </div>
                  
                 </li>
+            
                 <li>
                   <a href="##">
                     <div class="top-cat-list__title">
-                      <p class="sign-up__subtitle"> ADD TO CART</p>  <span>KSH 0</span><!-- THE VALUE OF THE SHOPPING CART SHOULD BE HERE-->
+                      <p class="sign-up__subtitle"> PRICE OF THE PRODUCT </p>   <span>KSH <?php echo htmlspecialchars($product['productprice']) ?></span>
                     </div>
                     <div class="top-cat-list__subtitle">
-                      Don't stop shopping,The basket ain't yet full! <span class="blue">+KSH <?php echo htmlspecialchars($product['productprice']) ?></span>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="##">
-                    <div class="top-cat-list__title">
-                      <p class="sign-up__subtitle"> BUY NOW </p>   <span>KSH <?php echo htmlspecialchars($product['productprice']) ?></span>
-                    </div>
-                    <div class="top-cat-list__subtitle">
-                      Hassle free payment,Zero rendundant pages ,just your address and pap!, it's on your door step! <span class="blue">+0</span>
+                      Hassle free payment,Zero rendundant pages ,just your address and pap!, it's on your door step! This section is a scope creep,Otherwise this is demo showing the functionality of an AR-product in an E-commerce project.
                     </div>
                   </a>
                 </li>
@@ -164,18 +162,19 @@ if($product['product3dimage'] == ""){
             </article> -->
             <article class="white-block">
               <div class="top-cat-title">
-                <h3>Similar products</h3>
+                <h3>Similar products that would fit in that space</h3>
                 <p><?php echo htmlspecialchars($product['productcategory']) ?>, <?php echo htmlspecialchars($totalproductsofcategory) ?> products</p>
               </div>
               <ul class="top-cat-list">
                 <?php foreach ($productcategory as $singleprod) {?>
                 <li>
-                  <a href="##">
+                <?php $proid = $singleprod['productid']; $url ="./index.php?page=productdesc&id=$proid"?>
+                  <a href="<?php echo htmlspecialchars( $url ); ?>">
                     <div class="top-cat-list__title">
                     <?php echo htmlspecialchars($singleprod['productname']) ?> <span>KSH <?php echo htmlspecialchars($singleprod['productprice']) ?> </span>
                     </div>
                     <div class="top-cat-list__subtitle">
-                    <?php echo htmlspecialchars($singleprod['productdescription']) ?>  <span class="purple">+472</span>
+                     <?php echo htmlspecialchars($singleprod['productdescription']) ?> <!-- <span class="purple"></span> -->
                     </div>
                   </a>
                 </li>

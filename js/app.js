@@ -55,9 +55,9 @@ class App{
                 if (supported){
                     const collection = document.getElementById("enter-ar");
                     //makes all the ar button to be block
-                    [...collection].forEach( el => {
-                        el.style.display = 'block';
-                    });
+                    // [...collection].forEach( el => {
+                    //     el.style.display = 'block';
+                    // });
                 }
 			} );
             
@@ -69,11 +69,11 @@ class App{
         this.hitTestSource = null;
         
         function onSelect() {
-            if (self.chair===undefined) return;
+            if (self.product===undefined) return;
             
             if (self.reticle.visible){
-                self.chair.position.setFromMatrixPosition( self.reticle.matrix );
-                self.chair.visible = true;
+                self.product.position.setFromMatrixPosition( self.reticle.matrix );
+                self.product.visible = true;
             }
         }
 
@@ -108,24 +108,29 @@ class App{
     }
     
 	showProduct(id){
+        // this.log(id);
         this.initAR();
-        
+        // let arvalue = {
+        //     prodname:id,
+        // };
+        // JSON.stringify(arvalue);
 		const loader = new GLTFLoader( ).setPath(this.assetsPath);
         const self = this;
-        
+  
         // this.loadingBar.visible = true;
-		
 		// Load a glTF resource
 		loader.load(
+        
 			// resource URL
-			`test${id}.glb`,
+            // console.log();
+			`${id}`,
 			// called when the resource is loaded
 			function ( gltf ) {
 
 				self.scene.add( gltf.scene );
-                self.chair = gltf.scene;
+                self.product = gltf.scene;
         
-                self.chair.visible = false; 
+                self.product.visible = false; 
                 
                 self.loadingBar.visible = false;
                 
@@ -170,9 +175,9 @@ class App{
 
             currentSession = null;
             
-            if (self.chair !== null){
-                self.scene.remove( self.chair );
-                self.chair = null;
+            if (self.product !== null){
+                self.scene.remove( self.product );
+                self.product = null;
             }
             
             self.renderer.setAnimationLoop( null );
